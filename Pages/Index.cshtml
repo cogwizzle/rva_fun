@@ -1,7 +1,15 @@
 ﻿@page "/"
+@inject HttpClient Http
+
+@functions {
+    private async Task getCurrentActivities()
+    {
+        var response = await Http.GetStringAsync("http://ec2-52-91-254-158.compute-1.amazonaws.com/activities");
+        Console.WriteLine(response);
+    }
+}
 
 <h1>Hello, world!</h1>
 
 Welcome to your new app.
-
-<SurveyPrompt Title="How is Blazor working for you?" />
+<div onload=@(async () => await getCurrentActivities()) />
