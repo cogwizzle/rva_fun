@@ -4,9 +4,9 @@
 
 @functions {
   //add back @using Models
-    private Activity[] activities { get; set; } = null;
+    private Activity[] activities { get; set; }
 
-    public class Activity
+    class Activity
     {
       public string _id { get; set; }
 
@@ -18,38 +18,27 @@
 
       public int Dislikes { get; set; }
 
-      //public string Picture { get; set; }
-
       public string createdAt { get; set; }
 
       public string updatedAt { get; set; }
 
-      public string __V { get; set; }
+      public int __v { get; set; }
 
       public string id { get; set; }
+      
+      public string Picture { get; set; }
     }
 
     protected override async Task OnInitAsync()
     {
-      Console.WriteLine("Before");
-      activities = await Http.GetJsonAsync<Activity[]>("http://ec2-52-91-254-158.compute-1.amazonaws.com/activities");
-      Console.WriteLine("After");
-      StateHasChanged();
-    }
-}
+      var response = await Http.GetStringAsync("http://ec2-52-91-254-158.compute-1.amazonaws.com/activities");
+      Console.WriteLine(response);
 
-@if (activities == null)
-{
-  Console.WriteLine('1');
-  <h1>Hello, world!</h1>
-}
-else
-{
-  Console.WriteLine('2');
-  <div>
-    @foreach (var activity in activities)
-    {
-      <div>@activity.Title</div>
+      var secondResponse = await Http.GetJsonAsync<Activity[]>("http://ec2-52-91-254-158.compute-1.amazonaws.com/activities");
+      Console.WriteLine(secondResponse);
+
+      foreach(Activity activity in secondResponse) {
+        Console.WriteLine("Here is an activity: " + activity.Title);
+      }
     }
-  </div>
 }
