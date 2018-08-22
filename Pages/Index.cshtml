@@ -1,15 +1,55 @@
 ﻿@page "/"
 @inject HttpClient Http
 
+
 @functions {
-    private async Task getCurrentActivities()
+  //add back @using Models
+    private Activity[] activities { get; set; } = null;
+
+    public class Activity
     {
-        var response = await Http.GetStringAsync("http://ec2-52-91-254-158.compute-1.amazonaws.com/activities");
-        Console.WriteLine(response);
+      public string _id { get; set; }
+
+      public string Title { get; set; }
+
+      public string Description { get; set; }
+
+      public int Likes { get; set; }
+
+      public int Dislikes { get; set; }
+
+      //public string Picture { get; set; }
+
+      public string createdAt { get; set; }
+
+      public string updatedAt { get; set; }
+
+      public string __V { get; set; }
+
+      public string id { get; set; }
+    }
+
+    protected override async Task OnInitAsync()
+    {
+      Console.WriteLine("Before");
+      activities = await Http.GetJsonAsync<Activity[]>("http://ec2-52-91-254-158.compute-1.amazonaws.com/activities");
+      Console.WriteLine("After");
+      StateHasChanged();
     }
 }
 
-<h1>Hello, world!</h1>
-
-Welcome to your new app.
-<div onload=@(async () => await getCurrentActivities()) />
+@if (activities == null)
+{
+  Console.WriteLine('1');
+  <h1>Hello, world!</h1>
+}
+else
+{
+  Console.WriteLine('2');
+  <div>
+    @foreach (var activity in activities)
+    {
+      <div>@activity.Title</div>
+    }
+  </div>
+}
