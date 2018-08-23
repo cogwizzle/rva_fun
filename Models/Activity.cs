@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Models
 {
-  public class Activity
+  class Activity
   {
     public string _id { get; set; }
 
@@ -16,14 +16,14 @@ namespace Models
 
     public int Dislikes { get; set; }
 
-    //public string Picture { get; set; }
-
     public string createdAt { get; set; }
 
     public string updatedAt { get; set; }
 
-    public string __V { get; set; }
+    public int __v { get; set; }
 
     public string id { get; set; }
+
+    public string Picture { get; set; }
   }
 }

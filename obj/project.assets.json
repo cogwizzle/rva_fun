@@ -720,23 +720,23 @@
     ]
   },
   "packageFolders": {
-    "/Users/codyhalbleib/.nuget/packages/": {},
+    "/Users/jfehrman/.nuget/packages/": {},
     "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/codyhalbleib/Desktop/rdnug/rva_fun/rva_fun.csproj",
+      "projectUniqueName": "/Users/jfehrman/Development/rva_fun/rva_fun.csproj",
       "projectName": "rva_fun",
-      "projectPath": "/Users/codyhalbleib/Desktop/rdnug/rva_fun/rva_fun.csproj",
-      "packagesPath": "/Users/codyhalbleib/.nuget/packages/",
-      "outputPath": "/Users/codyhalbleib/Desktop/rdnug/rva_fun/obj/",
+      "projectPath": "/Users/jfehrman/Development/rva_fun/rva_fun.csproj",
+      "packagesPath": "/Users/jfehrman/.nuget/packages/",
+      "outputPath": "/Users/jfehrman/Development/rva_fun/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "/Users/codyhalbleib/.nuget/NuGet/NuGet.Config"
+        "/Users/jfehrman/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.0"
