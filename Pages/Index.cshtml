@@ -12,11 +12,23 @@
       var response = await Http.GetStringAsync("http://ec2-52-91-254-158.compute-1.amazonaws.com/activities");
       Console.WriteLine(response);
 
-      var secondResponse = await Http.GetJsonAsync<Activity[]>("http://ec2-52-91-254-158.compute-1.amazonaws.com/activities");
-      Console.WriteLine(secondResponse);
+      activities = await Http.GetJsonAsync<Activity[]>("http://ec2-52-91-254-158.compute-1.amazonaws.com/activities");
+      //Console.WriteLine(secondResponse);
 
-      foreach(Activity activity in secondResponse) {
+      foreach(Activity activity in activities) {
         Console.WriteLine("Here is an activity: " + activity.Title);
       }
     }
+}
+
+@if (activities == null)
+{
+  <div>Loading...</div>
+}
+else
+{
+  @foreach (Activity activity in activities)
+  {
+    <div>@activity.Title</div>
+  }
 }
