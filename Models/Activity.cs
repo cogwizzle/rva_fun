@@ -6,6 +6,10 @@ namespace Models
 {
   class Activity
   {
+    public Activity() {
+      Picture = new Picture();
+    }
+
     public string _id { get; set; }
 
     public string Title { get; set; }
@@ -24,6 +28,6 @@ namespace Models
 
     public string id { get; set; }
 
-    public string Picture { get; set; }
+    public Picture Picture { get; set; }
   }
 }

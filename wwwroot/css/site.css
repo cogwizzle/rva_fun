@@ -121,3 +121,11 @@ app {
         display: block;
     }
 }
+
+.activity {
+    padding: 10px;
+    width: 100%;
+    border: 1px solid grey;
+    box-shadow: 4px 4px lightgrey;
+    background-color: white;
+}
