@@ -1,15 +1,14 @@
 ﻿@page "/"
 @inject HttpClient Http
 @using Models
-
+@using Constants
 
 @functions {
-    private string url = "http://ec2-52-91-254-158.compute-1.amazonaws.com";
-    private Activity[] activities { get; set; } 
+    private Models.Activity[] activities { get; set; } 
 
     protected override async Task OnInitAsync()
     {
-      activities = await Http.GetJsonAsync<Activity[]>(url + "/activities");
+      activities = await Http.GetJsonAsync<Models.Activity[]>(RouteConstants.apiActivities);
     }
 }
 
@@ -19,18 +18,20 @@
 }
 else
 {
-  @foreach (Activity activity in activities)
+  @foreach (Models.Activity activity in activities) 
   {
     <div class="activity">
-        <div
-          style="overflow-y:hidden;height:200px"
-        >
-          <img
-            src="@(url + activity.Picture.url)"
-            height="auto"
-            width="100%"
-          />
-        </div>
+        <a href="/activities/@activity.id">
+          <div
+            style="overflow-y:hidden;height:200px"
+          >
+            <img
+              src="@(RouteConstants.apiRoot + activity.Picture.url)"
+              height="auto"
+              width="100%"
+            />
+          </div>
+        </a>
       <br />
       @activity.Title
     </div>

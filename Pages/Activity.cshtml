@@ -1,0 +1,35 @@
+@page "/activities/{activityID}"
+@inject HttpClient Http
+@using Models
+@using Constants
+
+@functions {
+  [Parameter]
+  string activityID { get; set; }
+
+  private Models.Activity activity { get; set; }
+
+  protected override async Task OnInitAsync()
+  {
+    activity = await Http.GetJsonAsync<Models.Activity>(RouteConstants.apiActivities + activityID);
+  }
+}
+
+@if (activity == null)
+{
+  <div>Loading...</div>
+}
+else 
+{
+  <div class="activity">
+    <div
+      style="overflow-y:hidden;height:200px"
+    >
+      <img
+        src="@(RouteConstants.apiRoot + activity.Picture.url)"
+        height="auto"
+        width="100%"
+      />
+    </div>
+  </div>
+}

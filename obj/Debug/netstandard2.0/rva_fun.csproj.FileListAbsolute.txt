@@ -158,3 +158,5 @@
 /Users/jfehrman/Development/rva_fun/obj/Debug/netstandard2.0/blazor/linker/rva_fun.pdb
 /Users/jfehrman/Development/rva_fun/obj/Debug/netstandard2.0/blazor/inputs.bootjson.cache
 /Users/jfehrman/Development/rva_fun/obj/Debug/netstandard2.0/blazor/blazor.boot.json
+/Users/codyhalbleib/Desktop/rdnug/rva_fun/obj/Debug/netstandard2.0/Pages/Activity.g.i.cs
+/Users/codyhalbleib/Desktop/rdnug/rva_fun/obj/Debug/netstandard2.0/Pages/Activity.g.cs
