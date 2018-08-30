@@ -133,6 +133,7 @@ app {
 .inner_activity_wrapper {
     overflow-y: hidden;
     height: 200px;
+    width: inherit;
 }
 
 .activity_image {
