@@ -21,15 +21,24 @@
 }
 else 
 {
-  <div class="activity">
-    <div
-      style="overflow-y:hidden;height:200px"
-    >
-      <img
-        src="@(RouteConstants.apiRoot + activity.Picture.url)"
-        height="auto"
-        width="100%"
-      />
+   <div class="activity">
+        <a href="/activities/@activity.id">
+          <div
+            class="inner_activity_wrapper"
+          >
+            <img
+              src="@(RouteConstants.apiRoot + activity.Picture.url)"
+              height="100%"
+              width="auto"
+            />
+          </div>
+        </a>
+      <h2>
+        @activity.Title
+      </h2>
+      <p>
+        @activity.Description
+      </p>
+      <br/>
     </div>
-  </div>
 }
