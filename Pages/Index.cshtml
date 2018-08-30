@@ -23,12 +23,11 @@ else
     <div class="activity">
         <a href="/activities/@activity.id">
           <div
-            style="overflow-y:hidden;height:200px"
+            class="inner_activity_wrapper"
           >
             <img
               src="@(RouteConstants.apiRoot + activity.Picture.url)"
-              height="auto"
-              width="100%"
+              class="activity_image"
             />
           </div>
         </a>

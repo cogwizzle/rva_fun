@@ -160,3 +160,5 @@
 /Users/jfehrman/Development/rva_fun/obj/Debug/netstandard2.0/blazor/blazor.boot.json
 /Users/codyhalbleib/Desktop/rdnug/rva_fun/obj/Debug/netstandard2.0/Pages/Activity.g.i.cs
 /Users/codyhalbleib/Desktop/rdnug/rva_fun/obj/Debug/netstandard2.0/Pages/Activity.g.cs
+/Users/jfehrman/Development/rva_fun/obj/Debug/netstandard2.0/Pages/Activity.g.i.cs
+/Users/jfehrman/Development/rva_fun/obj/Debug/netstandard2.0/Pages/Activity.g.cs

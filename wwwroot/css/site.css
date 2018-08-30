@@ -129,3 +129,13 @@ app {
     box-shadow: 4px 4px lightgrey;
     background-color: white;
 }
+
+.inner_activity_wrapper {
+    overflow-y: hidden;
+    height: 200px;
+}
+
+.activity_image {
+    height: auto;
+    width: 100%;
+}
