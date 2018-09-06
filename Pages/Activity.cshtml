@@ -13,6 +13,18 @@
   {
     activity = await Http.GetJsonAsync<Models.Activity>(RouteConstants.apiActivities + activityID);
   }
+
+  protected async Task LikeActivity() {
+    //TODO: Separation of concerns
+    activity.Likes++;
+    await Http.PutJsonAsync<Models.Activity>(RouteConstants.apiActivities + activityID, activity);
+  }
+
+  protected async Task DislikeActivity() {
+    //TODO: Separation of concerns
+    activity.Dislikes++;
+    await Http.SendJsonAsync(HttpMethod.Put, RouteConstants.apiActivities + activityID, activity);
+  }
 }
 
 @if (activity == null)
@@ -26,7 +38,7 @@ else
       class="inner_activity_wrapper"
     >
     <img
-      src="@(RouteConstants.apiRoot + activity.Picture.url)"
+      src="@(RouteConstants.base64image + activity.Image)"
       class="activity_image"
     />
     </div>
@@ -36,5 +48,11 @@ else
     <p>
       @activity.Description
     </p>
+    <button onclick=@(async () => await LikeActivity())>
+      Like 👍
+    </button>
+    <button onclick=@(async () => await DislikeActivity())>
+      Dislike 👎
+    </button>
   </div>
 }
