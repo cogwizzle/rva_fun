@@ -48,11 +48,13 @@ else
     <p>
       @activity.Description
     </p>
-    <button onclick=@(async () => await LikeActivity())>
-      Like 👍
-    </button>
-    <button onclick=@(async () => await DislikeActivity())>
-      Dislike 👎
-    </button>
+    <div class="likes_dislikes">
+      <button class="likes" onclick=@(async () => await LikeActivity())>
+        Like 👍
+      </button>
+      <button class="dislikes" onclick=@(async () => await DislikeActivity())>
+        Dislike 👎
+      </button>
+    </div>
   </div>
 }

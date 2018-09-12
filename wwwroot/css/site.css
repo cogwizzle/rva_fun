@@ -136,6 +136,16 @@ app {
     margin: 5px;
     border-radius: 10px;
     padding-bottom: 40px;
+    display: 'flex';
+    flex-direction: 'column';
+}
+
+.activity h2 {
+    flex: 1;
+}
+
+.activity a {
+    flex: 3;
 }
 
 .inner_activity_wrapper {
@@ -163,12 +173,25 @@ app {
 
 .likes_dislikes {
     width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: 'row';
+    justify-content: flex-end;
+}
+
+.likes_dislikes button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    height: 100%;
 }
 
 .likes {
-    float: left;
+    text-align: center;
+    flex: 1;
 }
 
 .dislikes {
-    float: right;
+    text-align: center;
+    flex: 1;
 }
