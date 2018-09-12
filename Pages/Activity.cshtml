@@ -23,7 +23,7 @@
   protected async Task DislikeActivity() {
     //TODO: Separation of concerns
     activity.Dislikes++;
-    await Http.SendJsonAsync(HttpMethod.Put, RouteConstants.apiActivities + activityID, activity);
+    await Http.PutJsonAsync<Models.Activity>(RouteConstants.apiActivities + activityID, activity);
   }
 }
 
