@@ -140,7 +140,7 @@ app {
     flex-direction: 'column';
 }
 
-.activity h2 {
+.activity h4 {
     flex: 1;
 }
 
