@@ -18,32 +18,34 @@
 }
 else
 {
-  @foreach (Models.Activity activity in activities) 
-  {
-    <div class="activity">
-        <a href="/activities/@activity.id">
-          <div
-            class="inner_activity_wrapper"
-          >
-            <img
-              src="@(RouteConstants.base64image + activity.Image)"
-              class="activity_image"
-            />
-          </div>
-        </a>
-      <h2>
-        @activity.Title
-      </h2>
-      <div class="likes_dislikes">
-        <span class="likes">
-          @activity.Likes
-          👍
-        </span>
-        <span class="dislikes">
-          @activity.Dislikes
-          👎
-        </span>
+  <div class="activityGrid">
+    @foreach (Models.Activity activity in activities) 
+    {
+      <div class="activity">
+          <a href="/activities/@activity.id">
+            <div
+              class="inner_activity_wrapper"
+            >
+              <img
+                src="@(RouteConstants.base64image + activity.Image)"
+                class="activity_image"
+              />
+            </div>
+          </a>
+        <h2>
+          @activity.Title
+        </h2>
+        <div class="likes_dislikes">
+          <span class="likes">
+            @activity.Likes
+            👍
+          </span>
+          <span class="dislikes">
+            @activity.Dislikes
+            👎
+          </span>
+        </div>
       </div>
-    </div>
-  }
+    }
+  </div>
 }
