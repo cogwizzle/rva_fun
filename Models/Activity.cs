@@ -27,8 +27,6 @@ namespace Models
     public int __v { get; set; }
 
     public string id { get; set; }
-
-    //public Picture Picture { get; set; }
     public String Image { get; set; }
   }
 }
