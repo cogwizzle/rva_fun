@@ -4,12 +4,20 @@
 @using Constants
 
 @functions {
-    private Models.Activity[] activities { get; set; } 
+  private Models.Activity[] activities { get; set; } 
 
-    protected override async Task OnInitAsync()
-    {
-      activities = await Http.GetJsonAsync<Models.Activity[]>(RouteConstants.apiActivities);
-    }
+  protected override async Task OnInitAsync()
+  {
+    activities = await Http.GetJsonAsync<Models.Activity[]>(RouteConstants.apiActivities);
+  }
+  protected async Task LikeActivity(Models.Activity activity) {
+    activity.Likes++;
+    await Http.PutJsonAsync<Models.Activity>(RouteConstants.apiActivities + activity.id, activity);
+  }
+  protected async Task DislikeActivity(Models.Activity activity) {
+    activity.Dislikes++;
+    await Http.PutJsonAsync<Models.Activity>(RouteConstants.apiActivities + activity.id, activity);
+  }
 }
 
 @if (activities == null)
@@ -22,28 +30,26 @@ else
     @foreach (Models.Activity activity in activities) 
     {
       <div class="activity">
-          <a href="/activities/@activity.id">
-            <div
-              class="inner_activity_wrapper"
-            >
-              <img
-                src="@(RouteConstants.base64image + activity.Image)"
-                class="activity_image"
-              />
-            </div>
-          </a>
         <h4>
           @activity.Title
         </h4>
+        <a href="/activities/@activity.id">
+          <div
+            class="inner_activity_wrapper"
+          >
+            <img
+              src="@(RouteConstants.base64image + activity.Image)"
+              class="activity_image"
+            />
+          </div>
+        </a>
         <div class="likes_dislikes">
-          <span class="likes">
-            @activity.Likes
-            <img src="./images/thumbs_up.png" height="20px" width="20px" />
-          </span>
-          <span class="dislikes">
-            @activity.Dislikes
-            <img src="./images/thumbs_down.png" height="20px" width="20px" />
-          </span>
+          <button class="likes" onclick=@(async () => await LikeActivity(@activity))>
+            @activity.Likes Likes <img src="./images/thumbs_up.png" height="20px" width="20px" />
+          </button>
+          <button class="dislikes" onclick=@(async () => await DislikeActivity(@activity))>
+            @activity.Dislikes Dislikes <img src="./images/thumbs_down.png" height="20px" width="20px" />
+          </button>
         </div>
       </div>
     }

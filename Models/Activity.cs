@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Models
 {
-  class Activity
+  public class Activity
   {
     public Activity() {
 
