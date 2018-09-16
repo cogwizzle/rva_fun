@@ -30,9 +30,11 @@ else
     @foreach (Models.Activity activity in activities) 
     {
       <div class="activity">
-        <h4>
-          @activity.Title
-        </h4>
+        <div class="activityTitle bg-dark">
+          <h4>
+            @activity.Title
+          </h4>
+        </div>
         <a href="/activities/@activity.id">
           <div
             class="inner_activity_wrapper"

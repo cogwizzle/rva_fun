@@ -32,9 +32,11 @@
 else 
 {
   <div class="activity">
-    <h2>
-      @activity.Title
-    </h2>
+    <div class="activityTitle bg-dark">
+      <h2>
+        @activity.Title
+      </h2>
+    </div>
     <div
       class="inner_activity_wrapper"
     >
@@ -43,9 +45,6 @@ else
       class="activity_image"
     />
     </div>
-    <p>
-      @activity.Description
-    </p>
     <div class="likes_dislikes">
       <button class="likes" onclick=@(async () => await LikeActivity())>
         @activity.Likes Likes <img src="./images/thumbs_up.png" height="20px" width="20px" />
@@ -54,5 +53,8 @@ else
         @activity.Dislikes Dislikes <img src="./images/thumbs_down.png" height="20px" width="20px" />
       </button>
     </div>
+    <p class="activityDescription">
+      @activity.Description
+    </p>
   </div>
 }
