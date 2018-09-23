@@ -1,0 +1,44 @@
+@inject HttpClient Http
+@using Models
+@using Constants
+
+@functions {
+  [Parameter]
+  private Activity activity { get; set; }
+
+  //Like an activity
+  protected async Task LikeActivity(Activity activity) {
+    activity.Likes++;
+    await Http.PutJsonAsync<Activity>(RouteConstants.apiActivities + activity.id, activity);
+  }
+
+  //Dislike an activity
+  protected async Task DislikeActivity(Activity activity) {
+    activity.Dislikes++;
+    await Http.PutJsonAsync<Activity>(RouteConstants.apiActivities + activity.id, activity);
+  }
+}
+
+<div class="activity">
+  <div class="activityTitle bg-dark">
+    <h4>
+      @activity.Title
+    </h4>
+  </div>
+  <a href="/activities/@activity.id">
+    <div class="inner_activity_wrapper">
+      <img
+        src="@(RouteConstants.base64image + activity.Image)"
+        class="activity_image"
+      />
+    </div>
+  </a>
+  <div class="likes_dislikes">
+    <button class="likes" onclick=@(async () => await LikeActivity(@activity))>
+      @activity.Likes Likes <img src="./images/thumbs_up.png" height="20px" width="20px" />
+    </button>
+    <button class="dislikes" onclick=@(async () => await DislikeActivity(@activity))>
+      @activity.Dislikes Dislikes <img src="./images/thumbs_down.png" height="20px" width="20px" />
+    </button>
+  </div>
+</div>

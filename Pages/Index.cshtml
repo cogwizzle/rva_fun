@@ -4,19 +4,12 @@
 @using Constants
 
 @functions {
-  private Models.Activity[] activities { get; set; } 
+  private Activity[] activities { get; set; } 
 
+  //Get the list of activities when the index page first loads
   protected override async Task OnInitAsync()
   {
-    activities = await Http.GetJsonAsync<Models.Activity[]>(RouteConstants.apiActivities);
-  }
-  protected async Task LikeActivity(Models.Activity activity) {
-    activity.Likes++;
-    await Http.PutJsonAsync<Models.Activity>(RouteConstants.apiActivities + activity.id, activity);
-  }
-  protected async Task DislikeActivity(Models.Activity activity) {
-    activity.Dislikes++;
-    await Http.PutJsonAsync<Models.Activity>(RouteConstants.apiActivities + activity.id, activity);
+    activities = await Http.GetJsonAsync<Activity[]>(RouteConstants.apiActivities);
   }
 }
 
@@ -29,31 +22,7 @@ else
   <div class="activityGrid">
     @foreach (Models.Activity activity in activities) 
     {
-      <div class="activity">
-        <div class="activityTitle bg-dark">
-          <h4>
-            @activity.Title
-          </h4>
-        </div>
-        <a href="/activities/@activity.id">
-          <div
-            class="inner_activity_wrapper"
-          >
-            <img
-              src="@(RouteConstants.base64image + activity.Image)"
-              class="activity_image"
-            />
-          </div>
-        </a>
-        <div class="likes_dislikes">
-          <button class="likes" onclick=@(async () => await LikeActivity(@activity))>
-            @activity.Likes Likes <img src="./images/thumbs_up.png" height="20px" width="20px" />
-          </button>
-          <button class="dislikes" onclick=@(async () => await DislikeActivity(@activity))>
-            @activity.Dislikes Dislikes <img src="./images/thumbs_down.png" height="20px" width="20px" />
-          </button>
-        </div>
-      </div>
+      <ActivityComponent activity=@activity />
     }
   </div>
 }
