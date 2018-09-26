@@ -1,7 +1,28 @@
 ﻿@page "/"
+@inject HttpClient Http
+@using Models
+@using Constants
 
-<h1>Hello, world!</h1>
+@functions {
+  private Activity[] activities { get; set; } 
 
-Welcome to your new app.
+  //Get the list of activities when the index page first loads
+  protected override async Task OnInitAsync()
+  {
+    activities = await Http.GetJsonAsync<Activity[]>(RouteConstants.apiActivities);
+  }
+}
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+@if (activities == null)
+{
+  <div>Loading...</div>
+}
+else
+{
+  <div class="activityGrid">
+    @foreach (Models.Activity activity in activities) 
+    {
+      <ActivityComponent activity=@activity />
+    }
+  </div>
+}
